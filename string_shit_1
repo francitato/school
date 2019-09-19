@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+
+#define MAX_STR 100
+#define MAX_NOMI 100
+
+char nomi[MAX_NOMI][MAX_STR];
+
+void carica_vet(int n)
+{
+	int i;
+	
+	for(i=0;i<n;i++)
+	{
+		printf("inserisci una lettera \n");
+		scanf("%s",nomi[i]);
+	}
+	
+}
+
+
+
+int main (){
+
+	int n;
+	printf("quanti nomi vuoi inserire \n");
+
+	carica_vet(n);	
+
+	
+}
