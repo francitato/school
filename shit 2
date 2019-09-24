@@ -1,0 +1,54 @@
+#include<stdio.h>
+#define MAX_VET 100
+
+void scambia_int(int *ptra, int *ptrb)
+{
+	int dep;
+	dep=*ptra;
+	*ptra=*ptrb;
+	*ptrb=dep;
+
+}
+
+
+void carica_vet(int *vet, int n)
+{
+	int i;
+	
+	for(i=0;i<n;i++)
+	{
+		printf("inserisci un numero \n");
+		scanf("%d", vet[i]);
+	}
+	
+}
+
+
+void stampa_vet(int *vet, int n)
+{
+	int i;
+	
+	for(i=0;i<n;i++)
+	{
+		printf("%d ", vet[i]);	
+	}
+	printf("\n");
+}
+
+
+void seleciotn_sort(int *vet, int n)
+{
+
+}
+
+
+int main (){
+
+	int len, numeri[MAXVET];
+	printf("quanti numeri vuoi inserire \n");
+	scanf("%d",len);
+
+	carica_vet(numeri, len);	
+	carica_vet(numeri, len);
+	
+}
