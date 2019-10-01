@@ -18,7 +18,7 @@ void carica_vet(int *vet, int n)
 	for(i=0;i<n;i++)
 	{
 		printf("inserisci un numero \n");
-		scanf("%d", vet[i]);
+		scanf("%d", &vet[i]);
 	}
 	
 }
@@ -36,19 +36,32 @@ void stampa_vet(int *vet, int n)
 }
 
 
-void seleciotn_sort(int *vet, int n)
+void seleciotn_sort(int *vet, int n)	//dal più piccolo al più grande
 {
-
+	int i, posmin, j;
+	for(i=0;i<(n-1);i++)
+		{
+			posmin=i;
+			for(j=(i+1);j<n;j++)
+			{
+				if(vet[j]<vet[posmin])
+					posmin=j;
+			}
+			
+		scambia_int(&vet[i], &vet[posmin]);
+		}
+	
 }
 
 
 int main (){
 
-	int len, numeri[MAXVET];
+	int len, numeri[MAX_VET];
 	printf("quanti numeri vuoi inserire \n");
-	scanf("%d",len);
+	scanf("%d",&len);
 
 	carica_vet(numeri, len);	
-	carica_vet(numeri, len);
+	seleciotn_sort(numeri, len);
+	stampa_vet(numeri, len);
 	
 }
