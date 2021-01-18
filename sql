@@ -21,3 +21,5 @@ Trovare la media dei posti letto di ciascuna località
 
 Trovare l’appartamento meno costoso, il cognome e il numero di telefono del suo proprietario
 /*select NOME, COGNOME, TELEFONO from PROPRIETARI, RESIDENZE where TARIFFA_SETTIMANALE=(select min(TARIFFA_SETTIMANALE) from RESIDENZE) and proprietari.codice_proprietario=residenze.codice_proprietario*/
+
+alter session set current_chema='ADMIN';
