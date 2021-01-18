@@ -23,3 +23,7 @@ Trovare l’appartamento meno costoso, il cognome e il numero di telefono del su
 /*select NOME, COGNOME, TELEFONO from PROPRIETARI, RESIDENZE where TARIFFA_SETTIMANALE=(select min(TARIFFA_SETTIMANALE) from RESIDENZE) and proprietari.codice_proprietario=residenze.codice_proprietario*/
 
 alter session set current_chema='ADMIN';
+
+select CITTA, count(CODICE_RESIDENZA) as "Appartamenti con vista mare e piscina" from RESIDENZE where RESIDENZE.VISTA_MARE='TRUE' and RESIDENZE.PISCINA='TRUE' group by CITTA
+
+select NOME, COGNOME, PROPRIETARI.INDIRIZZO from PROPRIETARI, RESIDENZE where PROPRIETARI.PROPRIETARIO_UNICO='TRUE' and RESIDENZE.CITTA='SANREMO' and proprietari.codice_proprietario=residenze.codice_proprietario
