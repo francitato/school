@@ -46,4 +46,4 @@ select NOME, COGNOME, REGIONE from RESIDENZE, DOCENTI where REGIONE='Lombardia' 
 
 select REGIONE, count(ID) as "Numero docenti in una regione" from DOCENTI, RESIDENZE where DOCENTI.RESIDENZA=RESIDENZE.CITTA group by REGIONE order by count(ID) asc;
 
-select NOME, COGNOME, (65-ANNI_SERVIZIO) as "Anni prima della pensione" from DOCENTI, DATI_AMMINISTRATIVI where DOCENTI.ID=DATI_AMMINISTRATIVI.ID order by (65-ANNI_SERVIZIO) asc
+select NOME, COGNOME, (65-ANNI_SERVIZIO) as "Anni prima della pensione" from DOCENTI, DATI_AMMINISTRATIVI where DOCENTI.ID=DATI_AMMINISTRATIVI.ID order by (65-ANNI_SERVIZIO) asc;
