@@ -44,6 +44,6 @@ select REGIONE from RESIDENZE where CITTA='Cuneo';
 
 select NOME, COGNOME, REGIONE from RESIDENZE, DOCENTI where REGIONE='Lombardia' and DOCENTI.RESIDENZA=RESIDENZE.CITTA;
 
-select REGIONE, count(ID) as "Numero docenti in una regione" from DOCENTI, RESIDENZE where DOCENTI.RESIDENZA=RESIDENZE.CITTA group by REGIONE order by count(ID) asc;
+select * from (select REGIONE, count(ID) as "Numero docenti in una regione" from DOCENTI, RESIDENZE where DOCENTI.RESIDENZA=RESIDENZE.CITTA group by REGIONE order by count(ID) desc) where rownum=1;
 
 select NOME, COGNOME, (65-ANNI_SERVIZIO) as "Anni prima della pensione" from DOCENTI, DATI_AMMINISTRATIVI where DOCENTI.ID=DATI_AMMINISTRATIVI.ID order by (65-ANNI_SERVIZIO) asc;
