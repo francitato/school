@@ -16,7 +16,7 @@ Contare gli appartamenti con vista mare per ciascuna località
 /*select CITTA, count(CODICE_RESIDENZA) as "Appartamenti con vista mare" from RESIDENZE where PISCINA='TRUE' group by CITTA*/
 
 Trovare il guadagno settimanale di ciascun proprietario
-/*select NOME, COGNOME, sum(TARIFFA_SETTIMANALE) as Guadagno from RESIDENZE, PROPRIETARI where PROPRIETARI.codice_proprietario=residenze.codice_proprietario group by NOME, COGNOME order by guadagno desc*/
+/*select NOME, COGNOME, sum(TARIFFA_SETTIMANALE) as Guadagno from RESIDENZE, PROPRIETARI where PROPRIETARI.codice_proprietario=RESIDENZE.codice_proprietario group by NOME, COGNOME order by guadagno desc*/
 
 Trovare la media dei posti letto di ciascuna località
 /*select CITTA, avg(POSTI_LETTO) as "Media posti letto" from RESIDENZE group by CITTA*/
@@ -29,4 +29,13 @@ select CITTA, count(CODICE_RESIDENZA) as "Appartamenti con vista mare e piscina"
 select NOME, COGNOME, PROPRIETARI.INDIRIZZO from PROPRIETARI, RESIDENZE where PROPRIETARI.PROPRIETARIO_UNICO='TRUE' and RESIDENZE.CITTA='SANREMO' and proprietari.codice_proprietario=residenze.codice_proprietario
 
 
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+
+alter session set current_schema=ADMIN;
+
 select NOME, COGNOME, DATA_DI_NASCITA from DOCENTI where DATA_DI_NASCITA<'15 NOV 1957';
+
+select NOME, COGNOME, INCARICO_AGGIUNTIVO from DOCENTI, DATI_AMMINISTRATIVI where INCARICO_AGGIUNTIVO like 'Dipartimento%'and DOCENTI.ID=DATI_AMMINISTRATIVI.ID;
+
+select RESIDENZA, count(ID) as "Numero docenti" from DOCENTI group by RESIDENZA order by count(ID) desc;
