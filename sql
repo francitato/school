@@ -34,8 +34,16 @@ select NOME, COGNOME, PROPRIETARI.INDIRIZZO from PROPRIETARI, RESIDENZE where PR
 
 alter session set current_schema=ADMIN;
 
+select RESIDENZA, count(ID) as "Numero docenti in una citta" from DOCENTI group by RESIDENZA order by count(ID) desc;
+
 select NOME, COGNOME, DATA_DI_NASCITA from DOCENTI where DATA_DI_NASCITA<'15 NOV 1957';
 
-select NOME, COGNOME, INCARICO_AGGIUNTIVO from DOCENTI, DATI_AMMINISTRATIVI where INCARICO_AGGIUNTIVO like 'Dipartimento%'and DOCENTI.ID=DATI_AMMINISTRATIVI.ID;
+select NOME, COGNOME, INCARICO_AGGIUNTIVO from DOCENTI, DATI_AMMINISTRATIVI where INCARICO_AGGIUNTIVO like 'Dipartimento%' and DOCENTI.ID=DATI_AMMINISTRATIVI.ID;
 
-select RESIDENZA, count(ID) as "Numero docenti" from DOCENTI group by RESIDENZA order by count(ID) desc;
+select REGIONE from RESIDENZE where CITTA='Cuneo';
+
+select NOME, COGNOME, REGIONE from RESIDENZE, DOCENTI where REGIONE='Lombardia' and DOCENTI.RESIDENZA=RESIDENZE.CITTA;
+
+select REGIONE, count(ID) as "Numero docenti in una regione" from DOCENTI, RESIDENZE where DOCENTI.RESIDENZA=RESIDENZE.CITTA group by REGIONE order by count(ID) asc;
+
+select NOME, COGNOME, (65-ANNI_SERVIZIO) as "Anni prima della pensione" from DOCENTI, DATI_AMMINISTRATIVI where DOCENTI.ID=DATI_AMMINISTRATIVI.ID order by (65-ANNI_SERVIZIO) asc
