@@ -1,3 +1,5 @@
+alter session set current_schema=ADMIN;
+
 Trovare nome, cognome e numero di telefono dei proprietari di appartamenti a Sanremo con la piscina
 /*select NOME, COGNOME, TELEFONO from PROPRIETARI, RESIDENZE where (RESIDENZE.CITTA='SANREMO' and RESIDENZE.PISCINA='TRUE' and proprietari.codice_proprietario=residenze.codice_proprietario)*/
 
@@ -22,8 +24,9 @@ Trovare la media dei posti letto di ciascuna località
 Trovare l’appartamento meno costoso, il cognome e il numero di telefono del suo proprietario
 /*select NOME, COGNOME, TELEFONO from PROPRIETARI, RESIDENZE where TARIFFA_SETTIMANALE=(select min(TARIFFA_SETTIMANALE) from RESIDENZE) and proprietari.codice_proprietario=residenze.codice_proprietario*/
 
-alter session set current_chema='ADMIN';
-
 select CITTA, count(CODICE_RESIDENZA) as "Appartamenti con vista mare e piscina" from RESIDENZE where RESIDENZE.VISTA_MARE='TRUE' and RESIDENZE.PISCINA='TRUE' group by CITTA
 
 select NOME, COGNOME, PROPRIETARI.INDIRIZZO from PROPRIETARI, RESIDENZE where PROPRIETARI.PROPRIETARIO_UNICO='TRUE' and RESIDENZE.CITTA='SANREMO' and proprietari.codice_proprietario=residenze.codice_proprietario
+
+
+select NOME, COGNOME, DATA_DI_NASCITA from DOCENTI where DATA_DI_NASCITA<'15 NOV 1957';
