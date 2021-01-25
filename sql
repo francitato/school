@@ -1,3 +1,4 @@
+/*impostare admin come principale*/
 alter session set current_schema=ADMIN;
 
 Trovare nome, cognome e numero di telefono dei proprietari di appartamenti a Sanremo con la piscina
@@ -47,3 +48,19 @@ select NOME, COGNOME, REGIONE from RESIDENZE, DOCENTI where REGIONE='Lombardia' 
 select * from (select REGIONE, count(ID) as "Numero docenti in una regione" from DOCENTI, RESIDENZE where DOCENTI.RESIDENZA=RESIDENZE.CITTA group by REGIONE order by count(ID) desc) where rownum=1;
 
 select NOME, COGNOME, (65-ANNI_SERVIZIO) as "Anni prima della pensione" from DOCENTI, DATI_AMMINISTRATIVI where DOCENTI.ID=DATI_AMMINISTRATIVI.ID order by (65-ANNI_SERVIZIO) asc;
+
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+/*creare tabella*/
+create table gruppo (
+    codice number(5,0) not null,
+    nome varchar2(100) not null,
+    anno_fondazione number(4,0) not null,
+    primary key(codice))
+
+/*aggiungere chiave primaria*/
+alter table gruppo add primary key(codice)
+
+/*eliminare tabella*/
+drop table GRUPPO
